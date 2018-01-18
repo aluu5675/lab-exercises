@@ -1,3 +1,5 @@
+library(stringr)
+
 ## Part 1: Debugging
 
 my.num <- 6
@@ -9,7 +11,7 @@ my.vector <- c(my.num, initials)
 vector.sum <- sum(my.vector)
 
 # Describe why this doesn't work: 
-# 
+# Can't add character with a number
 
 install.packages("stringr")
 
@@ -18,22 +20,33 @@ my.line <- "Hey, hey, this is the library"
 print(str_length(my.line))
 
 # Describe why this doesn't work: 
-# 
+# Haven't loaded library
 
 said.the.famous <- paste(my.line, " - ", initial)
 
 # Describe why this doesn't work: 
-# 
+# the variable name is spelled wrong 
 
 
 ## Part 2 - Vector and function practice
 
 # Make a vector and use typeof to check what type R considers it to be
+typeof(c("dogs", "cats", "ferrets???")) 
+typeof(c(1, 4, 6))
+typeof(c(1, 2, "dogs"))
 
 # Write a function `CompareLength` that takes in 2 vectors, and returns the sentence:
 # "The difference in lengths is N"
+CompareLength <- function(v1, v2) {
+  diff <- abs(length(v1) - length(v2))
+  phrase <- paste("The difference in lengths is", diff)
+  return(phrase)
+}
 
+vector1 <- c(1, 2, 3, 4, 5)
+vector2 <- c(1, 2, 3)
 
+print(CompareLength(vector2, vector1))
 # Pass two vectors of different length to your `CompareLength` function
 
 
